@@ -1,0 +1,17 @@
+name: Build Jarvis APK
+on: [push, workflow_dispatch] # workflow_dispatch thapeko chhu taki manually run garna milosh
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build with Buildozer
+        uses: ArtemSerebrennkov/buildozer-action@v1
+        with:
+          buildozer_version: stable
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: jarvis-apk
+          path: bin/*.apk
