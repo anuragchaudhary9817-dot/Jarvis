@@ -6,17 +6,16 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 1.0
 
-# Requirements - requirements thapda dhyan dinu hola
-requirements = python3,kivy==2.2.1,kivymd==1.1.1,pillow
+# Simplified requirements for stability
+requirements = python3,kivy,kivymd,pillow
 
 orientation = portrait
 osx.python_version = 3
 osx.kivy_version = 1.9.1
 fullscreen = 0
 
-# Android specific
-android.archs = arm64-v8a, armeabi-v7a
-android.allow_backup = True
+# Android Stable Config
+android.archs = arm64-v8a
 android.api = 31
 android.minapi = 21
 android.sdk = 31
