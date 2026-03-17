@@ -1,4 +1,5 @@
 name: Build APK
+
 on:
   push:
     branches: [ main ]
@@ -10,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
