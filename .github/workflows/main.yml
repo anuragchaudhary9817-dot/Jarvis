@@ -1,16 +1,15 @@
-name: Build Jarvis APK
+name: Build
 on: [push, workflow_dispatch]
-
 jobs:
-  build:
+  apk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build with Buildozer
+      - name: Build APK
         uses: ArtemSerebrennkov/buildozer-action@v1
         with:
           buildozer_version: stable
-      - name: Upload APK
+      - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: jarvis-apk
