@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
@@ -15,15 +15,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install System Dependencies
+      - name: Install Dependencies
         run: |
           sudo apt update
           sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev
           pip3 install --user --upgrade Cython==0.29.33 buildozer
 
-      - name: Build with Buildozer
+      - name: Fresh Buildozer Setup
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Cleaning only if directory exists to avoid FileNotFoundError
-          [ -d .buildozer ] && rm -rf .buildozer
+          rm -rf .buildozer
+          # Initializing buildozer to download fresh SDK/NDK
+          buildozer android debug || true
+          # Running second time to finalize
           buildozer android debug
